@@ -86,8 +86,9 @@ jobs:
       - name: Archive binary (linux-musl)
         if: matrix.target =='x86_64-unknown-linux-musl'
         run: |
+          # 注意，下面进入了三级目录，与上面两个打包操作路径不同
           cd target/x86_64-unknown-linux-musl/release
-          cp ../../doc/conf/.env.example .env
+          cp ../../../doc/conf/.env.example .env
           tar czvf ../../../${{ matrix.name }} rnacos .env
           cd -
 
